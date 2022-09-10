@@ -1,0 +1,21 @@
+name: run setup
+on:
+  push:
+  pull_request:
+
+env:
+  RUN: $GITHUB_WORKSPACE/setup.sh
+
+jobs:
+  run_setup:
+    name: run setup
+    runs-on: ubuntu-22.04
+    timeout-minutes: 10
+    steps:
+    - name: Update & upgrade packages
+      run: sudo apt-get update && sudo apt-get upgrade -y
+    - uses: actions/checkout@v3
+      with:
+        submodules: true
+    - name: Run setup
+      run: ${{ env.RUN }}
