@@ -75,6 +75,12 @@ function create_aliases() {
   printf "%s\n\n" "Done"
 }
 
+function add_bashrc_vars() {
+  echo "Adding bashrc vars..."
+  printf "\n%s" "export CXXFLAGS='-std=c++20 -Wall -Wextra -Werror -Wpedantic -Wconversion'" >> ~/.bashrc
+  printf "%s\n\n" "Done"
+}
+
 
 sudo apt-get update && sudo apt-get upgrade -y
 sudo apt install -y curl git
@@ -84,6 +90,7 @@ install_tools
 configure_gpg
 configure_git
 create_aliases
+add_bashrc_vars
 
 echo
 echo "----   SETUP DONE   ----"
